@@ -26,4 +26,4 @@ WORKDIR $ROOT
 COPY ./entrypoint.sh /entrypoint.sh
 
 #ENTRYPOINT ["/entrypoint.sh"]
-ENTRYPOINT ["allure --version"]
+#ENTRYPOINT ["allure --version"]
