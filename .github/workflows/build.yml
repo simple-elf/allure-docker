@@ -9,7 +9,7 @@ jobs:
     name: Build and push docker image
     runs-on: ubuntu-latest
     env:
-      ALLURE_VERSION: 2.13.7
+      ALLURE_VERSION: 2.13.8
     steps:
       - uses: actions/checkout@v2
 
