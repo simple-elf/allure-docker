@@ -6,7 +6,10 @@ on:
 
 jobs:
   main:
+    name: Build and push docker image
     runs-on: ubuntu-latest
+    env:
+      ALLURE_VERSION: '2.13.7'
     steps:
       - uses: actions/checkout@v2
 
@@ -29,9 +32,10 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
+          build-args: RELEASE=$ALLURE_VERSION
           tags: |
             simple1elf/allure-docker:latest
-            simple1elf/allure-docker:2.13.6
+            simple1elf/allure-docker:$ALLURE_VERSION
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
