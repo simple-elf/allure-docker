@@ -32,10 +32,10 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          build-args: RELEASE=$ALLURE_VERSION
+          build-args: RELEASE=${ALLURE_VERSION}
           tags: |
             simple1elf/allure-docker:latest
-            simple1elf/allure-docker:$ALLURE_VERSION
+            simple1elf/allure-docker:${ALLURE_VERSION}
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
