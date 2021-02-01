@@ -51,7 +51,7 @@ jobs:
           build-args: RELEASE=${{ env.ALLURECTL_VERSION }}
           tags: |
             simple1elf/allurectl-docker:latest
-            simple1elf/allurectl-docker:${{ env.ALLURE_VERSION }}
+            simple1elf/allurectl-docker:${{ env.ALLURECTL_VERSION }}
 
       - name: Image digest
         run: echo ${{ steps.allurectl_build.outputs.digest }}
