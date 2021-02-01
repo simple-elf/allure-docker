@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       ALLURE_VERSION: 2.13.8
+      ALLURECTL_VERSION: 1.13.0
     steps:
       - uses: actions/checkout@v2
 
@@ -25,12 +26,12 @@ jobs:
           username: simple1elf #${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build and push
-        id: docker_build
+      - name: Build and push Allure commandline
+        id: allure_build
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: ./Dockerfile
+          file: allure-commandline/Dockerfile
           push: true
           build-args: RELEASE=${{ env.ALLURE_VERSION }}
           tags: |
@@ -38,4 +39,19 @@ jobs:
             simple1elf/allure-docker:${{ env.ALLURE_VERSION }}
 
       - name: Image digest
-        run: echo ${{ steps.docker_build.outputs.digest }}
+        run: echo ${{ steps.allure_build.outputs.digest }}
+
+      - name: Build and push Allurectl
+        id: allurectl_build
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: allurectl/Dockerfile
+          push: true
+          build-args: RELEASE=${{ env.ALLURECTL_VERSION }}
+          tags: |
+            simple1elf/allurectl-docker:latest
+            simple1elf/allurectl-docker:${{ env.ALLURE_VERSION }}
+
+      - name: Image digest
+        run: echo ${{ steps.allurectl_build.outputs.digest }}
