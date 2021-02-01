@@ -9,15 +9,15 @@ RUN apk add bash
 RUN apk add wget
 RUN apk add unzip
 
-RUN mkdir -p /allurectl-$RELEASE/bin/
+RUN mkdir -p /allure-$RELEASE/bin/
 RUN wget $ALLURE_REPO/$RELEASE/allurectl_linux_386 -O /allure-$RELEASE/bin/allurectl --no-verbose
 
 RUN rm -rf /var/cache/apk/*
 
-RUN chmod -R +x /allurectl-$RELEASE/bin
+RUN chmod -R +x /allure-$RELEASE/bin
 
 ENV ROOT=/app
-ENV PATH=$PATH:/allurectl-$RELEASE/bin
+ENV PATH=$PATH:/allure-$RELEASE/bin
 
 RUN mkdir -p $ROOT
 
