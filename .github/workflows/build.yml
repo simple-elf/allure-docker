@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       ALLURE_VERSION: 2.13.8
-      ALLURECTL_VERSION: 1.16.1
+      ALLURECTL_VERSION: 1.16.2
     steps:
       - uses: actions/checkout@v2
 
