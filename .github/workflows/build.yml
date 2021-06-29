@@ -9,8 +9,8 @@ jobs:
     name: Build and push docker image
     runs-on: ubuntu-latest
     env:
-      ALLURE_VERSION: 2.13.8
-      ALLURECTL_VERSION: 1.16.4
+      ALLURE_VERSION: 2.14.0
+      ALLURECTL_VERSION: 1.19.3
     steps:
       - uses: actions/checkout@v2
 
